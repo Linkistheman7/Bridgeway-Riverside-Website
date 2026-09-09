@@ -12,12 +12,22 @@
     <!--HEADER-->
     <section id="header">
         <header>
-            <img src="images/common/bridgeway-riverside-church-logo.png" alt="" id="logo" onclick="window.location.href='./index.html'">
-            <div id="nav">
+            <a href="index.html" class="site-logo-link" aria-label="Bridgeway Riverside Church home">
+                <img src="images/common/bridgeway-riverside-church-logo.png" alt="Bridgeway Riverside Church" id="logo">
+            </a>
+            <nav id="desktop-nav" aria-label="Main navigation">
                 <a href="index.html" class="navlink">Home</a>
-                <a href="events.html" class="navlink">Events</a>
+                <a href="beliefs&history.html" class="navlink">Beliefs</a>
                 <a href="index.html#contact" class="navlink">Contact</a>
-            </div>
+            </nav>
+            <details class="mobile-menu">
+                <summary>Menu</summary>
+                <nav id="nav" aria-label="Main navigation">
+                    <a href="index.html" class="navlink">Home</a>
+                    <a href="beliefs&history.html" class="navlink">Beliefs</a>
+                    <a href="index.html#contact" class="navlink">Contact</a>
+                </nav>
+            </details>
         </header>
     </section>
 
@@ -26,16 +36,14 @@
         <div class="hero-img">
             <div class="hero-cont">
                 <div class="service-time">
-                    <li>SUNDAYS AT 10:30 AM</li>
+                    <span>SUNDAYS AT 10:30 AM</span>
                 </div>
-                <h1>Growing <span class="hero-highlight hero-highlight-large">Together</span><br>
-                    in <span class="hero-highlight hero-highlight-large">Knowledge</span><br>
-                    and affection for<br>
+                <h1>Growing <span class="hero-highlight hero-highlight-large">Together</span> in <span class="hero-highlight hero-highlight-large">Knowledge</span> and affection for<br>
                     <span class="hero-highlight hero-highlight-largest">Jesus</span>
                 </h1>
                 <!-- <h2>and then passing it on to others</h2> -->
-                <button class="hero-button primary">Contact Us</button>
-                <button class="hero-button secondary">Learn More</button>
+                <a class="hero-button primary" href="#contact">Contact Us</a>
+                <a class="hero-button secondary" href="beliefs&history.html">Learn More</a>
             </div>
         </div>
     </section>
@@ -50,41 +58,95 @@
 
     </section>
 
-    <!--EVENTS-->
-    <section id="events">
-        <div class="event-container">
-            <div class="event-item">
-                <img src="images/events/Fuel-Camp-Group.png" alt="Recent Event">
-                <h1>Fuel Camp</h1>
+    <!--WAYS TO ENGAGE-->
+    <section id="ways-to-engage">
+        <h1>Ways to Engage</h1>
+        <div class="engagement-carousel" aria-label="Ways to engage">
+            <button class="engagement-control previous" type="button" aria-label="Show previous way to engage">&#10094;</button>
+            <div class="engagement-viewport">
+                <div class="engagement-container" id="engagement-track" tabindex="0">
+                    <article class="engagement-item">
+                        <img src="images/events/Fuel-Camp-Group.png" alt="Fuel Camp group">
+                        <h2>Fuel Camp</h2>
+                    </article>
+                    <article class="engagement-item">
+                        <img src="images/index/hero.png" alt="People gathering at Bridgeway Riverside">
+                        <h2>Ladies Night</h2>
+                    </article>
+                    <article class="engagement-item">
+                        <img src="images/index/hero.png" alt="People gathering at Bridgeway Riverside">
+                        <h2>Ladies Night</h2>
+                    </article>
+                </div>
             </div>
+            <button class="engagement-control next" type="button" aria-label="Show next way to engage">&#10095;</button>
+        </div>
+        <a class="facebook-button" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+            Visit us on Facebook
+        </a>
+    </section>
 
-             <div class="event-item">
-                <img src="images/index/hero.png" alt="Recent Event">
-                <h1>Ladies Night</h1>
+    <!--partners-->
+    <section id="partners">
+        <h1>Bridgeway Partners</h1>
+        <div class="partner-container">
+            <div class="partner-item">
+                <img src="images/common/bridgeway-riverside-church-logo.png" alt="">
+                <h1>Partner Name</h1>
+                <p>lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
             </div>
-
-            <div class="event-item">
-                <img src="images/index/hero.png" alt="Recent Event">
-                <h1>Ladies Night</h1>
+            <div class="partner-item">
+                <img src="images/common/bridgeway-riverside-church-logo.png" alt="">
+                <h1>Partner Name</h1>
+                <p>lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
+            </div>
+            <div class="partner-item">
+                <img src="images/common/bridgeway-riverside-church-logo.png" alt="">
+                <h1>Partner Name</h1>
+                <p>lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
             </div>
         </div>
     </section>
 
-    <!--Our Minsitry-->
-    <section class="our-ministry">
-
-    </section>
-
     <!--Contact-->
     <section id="contact">
+        <div class="contact-layout">
+            <div class="contact-location">
+                <h2>Visit Us</h2>
+                <iframe
+                    src="https://www.google.com/maps?q=64+Elizabeth+St,+Moscow,+OH+45153&output=embed"
+                    title="Map to Bridgeway Riverside Church"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <address>64 Elizabeth St<br>Moscow, OH 45153</address>
+            </div>
 
+            <form>
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" name="first-name" autocomplete="given-name" required>
+
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" name="last-name" autocomplete="family-name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" autocomplete="email" required>
+                
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" autocomplete="tel" required>
+
+                <div class="form-actions">
+                    <button type="submit">Submit</button>
+                    <button type="reset">Reset</button>
+                </div>
+            </form>
+        </div>
     </section>
 
     <!--FOOTER-->
     <section id="footer">
         <footer>
             <div class="footer-brand">
-                <img src="images/common/bridgeway-riverside-church-logo.png" alt="" id="logo" onclick="window.location.href='#'">
+                <img src="images/common/bridgeway-riverside-church-logo.png" alt="Bridgeway Riverside Church" id="footer-logo">
             
                 <div class="social-links">
                     
@@ -102,9 +164,10 @@
             <hr>
             <div class="footer-copyright">
                 <p>© 2025 Bridgeway Riverside Church. All rights reserved.</p>
-                <p>Made with care in Moscow, Ohio.</p>
             </div>
         </footer>
     </section>
+
+    <script src="js/engagement-carousel.js"></script>
 </body>
 </html>

@@ -1,10 +1,15 @@
 * {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
 }
 
 html { 
     scroll-behavior: smooth; 
+}
+
+body {
+    overflow-x: hidden;
 }
 
 :root {
@@ -25,8 +30,103 @@ header {
 
 #logo {
     width: 8vw;
+    max-width: 120px;
+    min-width: 64px;
     height: auto;
     cursor: pointer;
+}
+
+.site-logo-link {
+    display: flex;
+    align-items: center;
+}
+
+.mobile-menu {
+    display: none;
+}
+
+.mobile-menu summary {
+    display: none;
+}
+
+#footer-logo {
+    width: 8vw;
+    max-width: 120px;
+    min-width: 64px;
+    height: auto;
+}
+
+@media (max-width: 700px) {
+    header {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.75rem 1rem;
+    }
+
+    .site-logo-link {
+        justify-content: center;
+    }
+
+    .mobile-menu {
+        display: block;
+        width: 100%;
+    }
+
+    .mobile-menu summary {
+        display: block;
+        width: 100%;
+        padding: 0.65rem 1rem;
+        border: 1px solid rgba(2, 113, 186, 0.35);
+        border-radius: 6px;
+        color: var(--bridgewayblue);
+        cursor: pointer;
+        font-weight: 600;
+        list-style: none;
+        text-align: center;
+    }
+
+    .mobile-menu summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .mobile-menu summary::after {
+        content: " +";
+    }
+
+    .mobile-menu[open] summary::after {
+        content: " -";
+    }
+
+    #nav {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        margin: 0;
+        padding-top: 0.35rem;
+        font-size: 1rem;
+    }
+
+    .navlink {
+        padding: 0.7rem 1rem;
+        border-bottom: 1px solid rgba(2, 113, 186, 0.12);
+        text-align: center;
+    }
+}
+
+@media (max-width: 420px) {
+    header {
+        align-items: center;
+    }
+
+    #logo,
+    #footer-logo {
+        min-width: 56px;
+    }
+
+    #nav {
+        font-size: 0.85rem;
+    }
 }
 
     /* Navigation Styling */
@@ -49,6 +149,63 @@ header {
         transition: color 200ms;
         color: var(--bridgewayblue);
     }
+
+#desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    font-size: 2vw;
+    letter-spacing: .01em;
+}
+
+.mobile-menu summary {
+    display: none;
+}
+
+@media (max-width: 700px) {
+    header {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.75rem 1rem;
+    }
+
+    #desktop-nav {
+        display: none;
+    }
+
+    .mobile-menu {
+        display: block;
+        width: 100%;
+    }
+
+    .mobile-menu summary {
+        display: block;
+        width: 100%;
+        padding: 0.65rem 1rem;
+        border: 1px solid rgba(2, 113, 186, 0.35);
+        border-radius: 6px;
+        color: var(--bridgewayblue);
+        cursor: pointer;
+        font-weight: 600;
+        list-style: none;
+        text-align: center;
+    }
+
+    #nav {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 0;
+        margin: 0;
+        padding-top: 0.35rem;
+        font-size: 1rem;
+    }
+
+    .navlink {
+        padding: 0.7rem 1rem;
+        border-bottom: 1px solid rgba(2, 113, 186, 0.12);
+        text-align: center;
+    }
+}
 
 
 
