@@ -109,11 +109,18 @@
     padding: 3rem 5vw;
 }
 
+
 #ways-to-engage > h1,
 #partners > h1 {
     margin: 0 0 1.5rem;
     color: var(--bridgewayblue);
     text-align: center;
+}
+
+#ways-to-engage h4 {
+    border-top: 1px solid rgba(2, 113, 186, 0.18);
+    text-align: center;
+    font-weight: 400;
 }
 
 #partners {
@@ -158,20 +165,13 @@
     padding: 2rem;
     border-radius: 16px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    width: 260px;
+    width: clamp(240px, 38%, 360px);
     max-width: 100%;
-    flex: 0 0 260px;
-}
-
-@media (min-width: 761px) {
-    .engagement-item,
-    .partner-item {
-        width: 300px;
-        flex-basis: 300px;
-    }
+    flex: 0 0 clamp(240px, 38%, 360px);
 }
 
 .engagement-item {
+    padding: 1.5rem;
     opacity: 0.62;
     transform: scale(0.9);
     transition: opacity 200ms ease, transform 200ms ease;
@@ -200,6 +200,20 @@
 .engagement-control:focus-visible {
     background-color: var(--bridgewayblue);
     color: var(--white);
+}
+
+.engagement-control:disabled {
+    border-color: #b8c8d4;
+    background-color: #e8eef2;
+    color: #8b9ba6;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.engagement-control:disabled:hover,
+.engagement-control:disabled:focus-visible {
+    background-color: #e8eef2;
+    color: #8b9ba6;
 }
 
 .facebook-button {
@@ -381,8 +395,8 @@
     }
 
     .engagement-item {
-        width: 220px;
-        flex-basis: 220px;
+        width: 260px;
+        flex-basis: 260px;
         padding: 1.25rem;
     }
 
@@ -464,8 +478,8 @@
     }
 
     .engagement-item {
-        flex-basis: 210px;
-        width: 210px;
+        flex-basis: 240px;
+        width: 240px;
         padding: 1rem;
     }
 

@@ -4,14 +4,16 @@ if (engagementTrack) {
     const originalItems = [...engagementTrack.querySelectorAll(".engagement-item")];
     const previousButton = document.querySelector(".engagement-control.previous");
     const nextButton = document.querySelector(".engagement-control.next");
-    let activeIndex = originalItems.length + 1;
+    let activeIndex = 0;
     let isMoving = false;
-
-    originalItems.forEach((item) => engagementTrack.appendChild(item.cloneNode(true)));
-    originalItems.forEach((item) => engagementTrack.insertBefore(item.cloneNode(true), engagementTrack.firstChild));
 
     const items = [...engagementTrack.querySelectorAll(".engagement-item")];
     const originalCount = originalItems.length;
+
+    function updateControls() {
+        previousButton.disabled = activeIndex === 0;
+        nextButton.disabled = activeIndex === originalCount - 1;
+    }
 
     function centerItem(index, animate = true) {
         const viewport = engagementTrack.parentElement;
@@ -22,46 +24,41 @@ if (engagementTrack) {
         engagementTrack.style.transition = animate ? "transform 450ms ease" : "none";
         engagementTrack.style.transform = `translateX(${offset}px)`;
         items.forEach((item, itemIndex) => item.classList.toggle("is-active", itemIndex === index));
-    }
-
-    function setExpanded(item, expanded) {
-        item.classList.toggle("is-expanded", expanded);
+        updateControls();
     }
 
     function showItem(nextIndex) {
-        if (isMoving) return;
+        if (isMoving || nextIndex < 0 || nextIndex >= originalCount) return;
         isMoving = true;
         activeIndex = nextIndex;
         centerItem(activeIndex);
 
-        window.setTimeout(() => {
-            if (activeIndex >= originalCount * 2) {
-                activeIndex -= originalCount;
-                centerItem(activeIndex, false);
-            } else if (activeIndex < originalCount) {
-                activeIndex += originalCount;
-                centerItem(activeIndex, false);
-            }
+        let finished = false;
+        const finishTransition = () => {
+            if (finished) return;
+            finished = true;
+            engagementTrack.removeEventListener("transitionend", handleTransitionEnd);
             isMoving = false;
-        }, 460);
+        };
+
+        const handleTransitionEnd = (event) => {
+            if (event.propertyName === "transform") finishTransition();
+        };
+        engagementTrack.addEventListener("transitionend", handleTransitionEnd);
+        window.setTimeout(finishTransition, 500);
     }
 
     items.forEach((item) => {
-        item.tabIndex = 0;
-        item.addEventListener("focusin", () => {
-            items.forEach((otherItem) => {
-                if (otherItem !== item) setExpanded(otherItem, false);
-            });
-            setExpanded(item, true);
+        item.addEventListener("click", () => {
+            const itemIndex = items.indexOf(item);
+            if (itemIndex !== activeIndex) {
+                showItem(itemIndex);
+            }
         });
     });
 
     previousButton.addEventListener("click", () => showItem(activeIndex - 1));
     nextButton.addEventListener("click", () => showItem(activeIndex + 1));
-    engagementTrack.addEventListener("keydown", (event) => {
-        if (event.key === "ArrowLeft") showItem(activeIndex - 1);
-        if (event.key === "ArrowRight") showItem(activeIndex + 1);
-    });
 
     window.addEventListener("load", () => centerItem(activeIndex, false));
     window.addEventListener("resize", () => centerItem(activeIndex, false));
