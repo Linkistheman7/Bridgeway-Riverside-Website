@@ -14,15 +14,15 @@
 }
 
 .hero-cont {
-    background-color: rgb(from var(--bridgewayblue) r g b / 0.5);
-    filter: drop-shadow(0px 0px 10px black);
+    background-color: rgba(2, 113, 186, 0.9);
     color: var(--white);
     width: min(100%, 620px);
     padding: clamp(1.5rem, 4vw, 2.5rem);
-    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 16px;
     text-align: center;
     margin: 0;
-    box-shadow: 0 24px 42px rgba(0, 0, 0, 0.28);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .hero-cont h1 {
@@ -78,7 +78,7 @@
     text-decoration: none;
     min-width: 150px;
     padding: 14px 26px;
-    border-radius: 999px;
+    border-radius: 6px;
     border: none;
     cursor: pointer;
     font-size: 1rem;
@@ -103,10 +103,22 @@
     opacity: 0.95;
 }
 
+.hero-button.secondary:hover,
+.hero-button.secondary:focus-visible {
+    background: #f8d34f;
+    border-color: #f8d34f;
+    color: #12364a;
+}
+
 /*ways to engage and partners*/
 #ways-to-engage,
 #partners {
     padding: 3rem 5vw;
+}
+
+#header #logo {
+    width: 10vw;
+    max-width: 140px;
 }
 
 
@@ -139,6 +151,7 @@
     position: relative;
     display: flex;
     align-items: center;
+    gap: 0.75rem;
     width: min(100%, 960px);
     margin: 0 auto;
 }
@@ -162,19 +175,24 @@
 .partner-item {
     background-color: var(--bridgewayblue);
     color: #ffffff;
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 16px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    width: clamp(240px, 38%, 360px);
+    width: clamp(280px, 46%, 420px);
     max-width: 100%;
-    flex: 0 0 clamp(240px, 38%, 360px);
+    flex: 0 0 clamp(280px, 46%, 420px);
 }
 
 .engagement-item {
-    padding: 1.5rem;
+    padding: 1rem;
     opacity: 0.62;
     transform: scale(0.9);
     transition: opacity 200ms ease, transform 200ms ease;
+}
+
+.partner-item {
+    width: clamp(240px, 38%, 360px);
+    flex-basis: clamp(240px, 38%, 360px);
 }
 
 .engagement-item.is-active {
@@ -237,12 +255,34 @@
 
 .engagement-item img,
 .partner-item img {
-    width: 100%;
+    display: block;
+    width: calc(100% + 1.5rem);
     aspect-ratio: 16 / 9;
     height: auto;
-    border-radius: 12px;
-    margin-bottom: 1rem;
+    margin: -0.75rem -0.75rem 1rem;
+    border: 0;
+    border-radius: 8px;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.24);
     object-fit: cover;
+}
+
+.engagement-item img {
+    width: calc(100% + 2rem);
+    margin: -1rem -1rem 1rem;
+}
+
+.partner-item img {
+    width: calc(100% + 2rem);
+    aspect-ratio: 16 / 9;
+    margin: -1rem -1rem 1rem;
+    padding: 0.5rem;
+    background-color: var(--white);
+    object-fit: contain;
+}
+
+#footer #footer-logo {
+    width: 10vw;
+    max-width: 140px;
 }
 
 .engagement-item h1,
@@ -252,10 +292,37 @@
     text-align: center;
 }
 
+.engagement-link {
+    display: block;
+    width: fit-content;
+    margin: 0.7rem auto 0;
+    padding: 0.35rem 0.7rem;
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    border-radius: 6px;
+    color: var(--white);
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 200ms ease, color 200ms ease;
+}
+
+.engagement-link:hover,
+.engagement-link:focus-visible {
+    border-color: #f8d34f;
+    background-color: #f8d34f;
+    color: #12364a;
+}
+
 /*contact form*/
 #contact {
     background-color: #f3f8fc;
     padding: 4rem 5vw;
+}
+
+#contact > h1 {
+    width: min(100%, 900px);
+    margin: 0 auto 2.5rem;
+    color: var(--bridgewayblue);
+    text-align: center;
 }
 
 #contact .contact-layout {
@@ -313,6 +380,12 @@
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
+#contact form h2 {
+    margin: 0 0 0.35rem;
+    color: var(--bridgewayblue);
+    text-align: center;
+}
+
 #contact label {
     width: min(100%, 300px);
     justify-self: center;
@@ -367,6 +440,46 @@
     opacity: 0.85;
 }
 
+.back-to-top {
+    position: fixed;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    z-index: 10;
+    display: grid;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+    border: 1px solid var(--bridgewayblue);
+    border-radius: 6px;
+    background-color: var(--bridgewayblue);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+    color: var(--white);
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1;
+    opacity: 0;
+    pointer-events: none;
+    text-decoration: none;
+    transform: translateY(0.5rem);
+    visibility: hidden;
+    transition: background-color 200ms ease, color 200ms ease, opacity 200ms ease, transform 200ms ease, visibility 200ms ease;
+}
+
+.back-to-top.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+.back-to-top:hover,
+.back-to-top:focus-visible {
+    border-color: #f8d34f;
+    background-color: #f8d34f;
+    color: #12364a;
+    transform: translateY(-2px);
+}
+
 @media (max-width: 600px) {
     #contact {
         padding: 3rem 5vw;
@@ -390,13 +503,13 @@
     }
 
     .engagement-container {
-        padding-right: calc((100% - 220px) / 2);
-        padding-left: calc((100% - 220px) / 2);
+        padding-right: calc((100% - 280px) / 2);
+        padding-left: calc((100% - 280px) / 2);
     }
 
     .engagement-item {
-        width: 260px;
-        flex-basis: 260px;
+        width: 280px;
+        flex-basis: 280px;
         padding: 1.25rem;
     }
 
@@ -423,7 +536,34 @@
     }
 
     .engagement-carousel {
+        display: block;
         width: 100%;
+        margin-left: 0;
+    }
+
+    .engagement-control {
+        display: none;
+    }
+
+    .engagement-viewport {
+        overflow: visible;
+    }
+
+    .engagement-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 1.5rem 0 2rem;
+        transform: none !important;
+    }
+
+    .engagement-item {
+        width: min(100%, 360px);
+        flex-basis: auto;
+        margin-right: auto;
+        margin-left: auto;
+        opacity: 1;
+        transform: none;
     }
 
     #contact .contact-layout {
@@ -478,8 +618,8 @@
     }
 
     .engagement-item {
-        flex-basis: 240px;
-        width: 240px;
+        flex-basis: 260px;
+        width: 260px;
         padding: 1rem;
     }
 

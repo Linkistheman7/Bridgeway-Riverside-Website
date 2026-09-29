@@ -63,3 +63,14 @@ if (engagementTrack) {
     window.addEventListener("load", () => centerItem(activeIndex, false));
     window.addEventListener("resize", () => centerItem(activeIndex, false));
 }
+
+const backToTop = document.querySelector(".back-to-top");
+
+if (backToTop) {
+    const toggleBackToTop = () => {
+        backToTop.classList.toggle("is-visible", window.scrollY > 500);
+    };
+
+    window.addEventListener("scroll", toggleBackToTop, { passive: true });
+    toggleBackToTop();
+}
